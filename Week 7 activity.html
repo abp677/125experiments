@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Week 7 Research Studio: From Chaos to Clarity</title>
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@4/dist/full.min.css" rel="stylesheet">
+
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  Week 7 Research Studio: From Chaos to Clarity
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4/dist/full.min.css" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Default dark mode styles */
@@ -13,41 +13,41 @@
       color: #fff;
       transition: background 0.3s ease, color 0.3s ease;
     }
-    
+
     /* Light mode styles */
     body.light-mode {
       background: #f5f5f5;
       color: #1a1a2e;
     }
-    
+
     body.light-mode .card {
       background: #ffffff;
       color: #1a1a2e;
     }
-    
+
     body.light-mode .input,
     body.light-mode .textarea {
       background: #ffffff;
       color: #1a1a2e;
       border-color: #d1d5db;
     }
-    
+
     body.light-mode .btn {
       background: #1a1a2e;
       color: #fff;
     }
-    
+
     body.light-mode .badge {
       border-color: #1a1a2e;
       color: #1a1a2e;
     }
-    
+
     .main-container {
       max-width: 896px;
       margin: 0 auto;
       padding: 20px;
     }
-    
+
     .theme-toggle {
       position: fixed;
       top: 20px;
@@ -61,29 +61,27 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       transition: all 0.3s ease;
     }
-    
+
     body.light-mode .theme-toggle {
       background: rgba(0, 0, 0, 0.05);
       border: 1px solid rgba(0, 0, 0, 0.1);
     }
-    
+
     .theme-toggle:hover {
       transform: scale(1.05);
     }
   </style>
-</head>
-<body>
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+  <button aria-label="Toggle theme" class="theme-toggle" id="themeToggle">
     <span id="themeIcon">🌙</span>
   </button>
-  
+
   <div class="main-container">
     <div class="flex flex-col gap-6 p-6">
       <div class="text-center space-y-2">
         <h1 class="text-2xl font-bold text-primary">From Chaos to Clarity</h1>
         <p class="text-base opacity-80">Everyone moves forward—just start where you are</p>
       </div>
-
+      <!-- Collect Yourself -->
       <div class="card bg-base-200 shadow-sm">
         <div class="card-body">
           <div class="flex items-center gap-3 mb-3">
@@ -92,28 +90,77 @@
             <div class="badge badge-outline">10 min</div>
           </div>
           <p class="text-sm mb-4 opacity-80">Take a quiet moment to orient. Write or type (3–5 sentences):</p>
-          
+
           <div class="space-y-3">
             <div>
               <label class="label"><span class="label-text text-sm">How many topics do I have?</span></label>
-              <input type="text" placeholder="Your answer..." class="input input-sm input-bordered w-full" id="topics-count">
+              <input class="input input-sm input-bordered w-full" id="topics-count" placeholder="Your answer..." type="text"/>
             </div>
             <div>
               <label class="label"><span class="label-text text-sm">How many research questions (roughly)?</span></label>
-              <input type="text" placeholder="Your answer..." class="input input-sm input-bordered w-full" id="questions-count">
+              <input class="input input-sm input-bordered w-full" id="questions-count" placeholder="Your answer..." type="text"/>
             </div>
             <div>
               <label class="label"><span class="label-text text-sm">How many sources have I saved?</span></label>
-              <input type="text" placeholder="Your answer..." class="input input-sm input-bordered w-full" id="sources-count">
+              <input class="input input-sm input-bordered w-full" id="sources-count" placeholder="Your answer..." type="text"/>
             </div>
             <div>
               <label class="label"><span class="label-text text-sm">What's exciting me right now? What's confusing me?</span></label>
-              <textarea placeholder="Share your thoughts..." class="textarea textarea-bordered w-full" rows="3" id="reflection-text"></textarea>
+              <textarea class="textarea textarea-bordered w-full" id="reflection-text" placeholder="Share your thoughts..." rows="3"></textarea>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- INSERTED: Track selection block -->
+      <div class="divider" id="track-divider"></div>
+      <div id="track-selection">
+        <div class="card bg-base-200 shadow-sm">
+          <div class="card-body">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="text-2xl">⚙️</div>
+              <h2 class="card-title text-lg">Pick a Track</h2>
+              <div class="badge badge-outline">20 min</div>
+            </div>
+            <p class="text-sm mb-4 opacity-80">Choose the track that fits your situation:</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <button onclick="selectTrack('A')" class="card bg-base-300 shadow-sm hover:bg-primary hover:text-primary-content transition-all text-left">
+                <div class="card-body">
+                  <h3 class="font-bold text-base mb-2">Track A: Generating Questions</h3>
+                  <p class="text-xs opacity-70 mb-3">For you if you have &lt; 10 questions or your topic still feels fuzzy</p>
+                </div>
+              </button>
+
+              <button onclick="selectTrack('B')" class="card bg-base-300 shadow-sm hover:bg-primary hover:text-primary-content transition-all text-left">
+                <div class="card-body">
+                  <h3 class="font-bold text-base mb-2">Track B: Expanding Sources</h3>
+                  <p class="text-xs opacity-70 mb-3">For you if you have 10+ questions but &lt; 10 sources</p>
+                </div>
+              </button>
+
+              <button onclick="selectTrack('C')" class="card bg-base-300 shadow-sm hover:bg-primary hover:text-primary-content transition-all text-left">
+                <div class="card-body">
+                  <h3 class="font-bold text-base mb-2">Track C: Refining Focus</h3>
+                  <p class="text-xs opacity-70 mb-3">For you if you have 10+ sources and want to narrow</p>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="track-content"></div>
+        <div class="card bg-base-200 shadow-sm mt-6">
+          <div class="card-body">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="text-2xl">💬</div>
+              <h2 class="card-title text-lg">Discussion</h2>
+            </div>
+            <p class="text-sm opacity-80">Use the selected track to guide your next steps.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Track Work -->
       <div class="card bg-base-200 shadow-sm">
         <div class="card-body">
           <div class="flex items-center gap-3 mb-3">
@@ -122,11 +169,11 @@
             <div class="badge badge-outline">20 min</div>
           </div>
           <p class="text-sm mb-4 opacity-80">List what you've done: read sources, drafted paragraphs, collected citations, explored ideas. Be specific.</p>
-          <textarea placeholder="e.g., Read Jones (2021) on social media algorithms, drafted 2 paragraphs on user behavior..." class="textarea textarea-bordered w-full" rows="5" id="track-work"></textarea>
-          
+          <textarea class="textarea textarea-bordered w-full" id="track-work" placeholder="e.g., Read Jones (2021) on social media algorithms, drafted 2 paragraphs on user behavior..." rows="5"></textarea>
+
           <div class="divider">Checkpoint</div>
           <p class="text-sm mb-2 opacity-80">After 10–15 minutes, pause:</p>
-          <textarea placeholder="One insight or connection you've noticed..." class="textarea textarea-bordered w-full" rows="3" id="track-checkpoint"></textarea>
+          <textarea class="textarea textarea-bordered w-full" id="track-checkpoint" placeholder="One insight or connection you've noticed..." rows="3"></textarea>
         </div>
       </div>
 
@@ -138,7 +185,7 @@
             <div class="badge badge-outline">15 min</div>
           </div>
           <p class="text-sm mb-4 opacity-80">Partner up. Each person shares (5 min): What are you working on? What question are you wrestling with? Then reflect:</p>
-          <textarea placeholder="What stuck with you from your partner's feedback?" class="textarea textarea-bordered w-full" rows="4" id="soundboard-reflection"></textarea>
+          <textarea class="textarea textarea-bordered w-full" id="soundboard-reflection" placeholder="What stuck with you from your partner's feedback?" rows="4"></textarea>
         </div>
       </div>
 
@@ -150,7 +197,7 @@
             <div class="badge badge-outline">15 min</div>
           </div>
           <p class="text-sm mb-4 opacity-80">Write each idea, quote, or source on a virtual sticky note. Group them. Label the groups. What patterns emerge?</p>
-          <textarea placeholder="Describe your clusters and what you noticed..." class="textarea textarea-bordered w-full" rows="6" id="clustering-notes"></textarea>
+          <textarea class="textarea textarea-bordered w-full" id="clustering-notes" placeholder="Describe your clusters and what you noticed..." rows="6"></textarea>
         </div>
       </div>
 
@@ -158,11 +205,11 @@
         <div class="card-body">
           <div class="flex items-center gap-3 mb-3">
             <div class="text-2xl">✅</div>
-            <h2 class="card-title text-lg">Wrap Up & Next Step</h2>
+            <h2 class="card-title text-lg">Wrap Up &amp; Next Step</h2>
             <div class="badge badge-outline">5 min</div>
           </div>
           <p class="text-sm mb-4 opacity-80">Write down one concrete next move:</p>
-          <textarea placeholder="e.g., Draft an outline for section 2, find 3 more sources on X, revise my research question..." class="textarea textarea-bordered w-full" rows="3" id="next-move"></textarea>
+          <textarea class="textarea textarea-bordered w-full" id="next-move" placeholder="e.g., Draft an outline for section 2, find 3 more sources on X, revise my research question..." rows="3"></textarea>
         </div>
       </div>
 
@@ -178,18 +225,18 @@
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const body = document.body;
-    
+
     // Load saved theme preference or default to dark
     const savedTheme = localStorage.getItem('theme') || 'dark';
     if (savedTheme === 'light') {
       body.classList.add('light-mode');
       themeIcon.textContent = '☀️';
     }
-    
+
     // Toggle theme on button click
     themeToggle.addEventListener('click', () => {
       body.classList.toggle('light-mode');
-      
+
       if (body.classList.contains('light-mode')) {
         themeIcon.textContent = '☀️';
         localStorage.setItem('theme', 'light');
@@ -198,54 +245,63 @@
         localStorage.setItem('theme', 'dark');
       }
     });
-    
-    // Save answers function
+
+    // Track selection helper to inject content (placeholder for future logic)
+    function selectTrack(t) {
+      const el = document.getElementById('track-content');
+      if (!el) return;
+      if (t === 'A') el.innerHTML = '<div class="alert">Track A selected: Focus on generating questions.</div>';
+      if (t === 'B') el.innerHTML = '<div class="alert">Track B selected: Focus on expanding sources.</div>';
+      if (t === 'C') el.innerHTML = '<div class="alert">Track C selected: Focus on refining focus.</div>';
+    }
+
+    // Save answers function (unchanged)
     function saveAnswers() {
-      const date = new Date().toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+      const date = new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
       });
-      
+
       let content = `WEEK 7 RESEARCH STUDIO: FROM CHAOS TO CLARITY\n`;
       content += `Date: ${date}\n`;
       content += `${'='.repeat(60)}\n\n`;
-      
+
       content += `1. COLLECT YOURSELF\n`;
       content += `${'-'.repeat(60)}\n`;
       content += `How many topics do I have?\n${document.getElementById('topics-count').value || '(not answered)'}\n\n`;
       content += `How many research questions (roughly)?\n${document.getElementById('questions-count').value || '(not answered)'}\n\n`;
       content += `How many sources have I saved?\n${document.getElementById('sources-count').value || '(not answered)'}\n\n`;
       content += `What's exciting me right now? What's confusing me?\n${document.getElementById('reflection-text').value || '(not answered)'}\n\n`;
-      
+
       content += `${'='.repeat(60)}\n\n`;
       content += `2. TRACK WORK\n`;
       content += `${'-'.repeat(60)}\n`;
       content += `${document.getElementById('track-work')?.value || '(not started yet)'}\n\n`;
-      
+
       const checkpoint = document.getElementById('track-checkpoint')?.value;
       if (checkpoint) {
         content += `Checkpoint Reflection:\n${checkpoint}\n\n`;
       }
-      
+
       content += `${'='.repeat(60)}\n\n`;
       content += `3. SOUNDBOARDING PAIRS\n`;
       content += `${'-'.repeat(60)}\n`;
       content += `What stuck with you from your partner's feedback?\n${document.getElementById('soundboard-reflection')?.value || '(not answered)'}\n\n`;
-      
+
       content += `${'='.repeat(60)}\n\n`;
       content += `4. MINI-CLUSTERING\n`;
       content += `${'-'.repeat(60)}\n`;
       content += `${document.getElementById('clustering-notes')?.value || '(not answered)'}\n\n`;
-      
+
       content += `${'='.repeat(60)}\n\n`;
       content += `5. WRAP UP & NEXT STEP\n`;
       content += `${'-'.repeat(60)}\n`;
       content += `My next concrete move is:\n${document.getElementById('next-move')?.value || '(not answered)'}\n\n`;
-      
+
       content += `${'='.repeat(60)}\n`;
       content += `End of worksheet. Keep going!\n`;
-      
+
       const blob = new Blob([content], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -253,9 +309,7 @@
       a.download = 'research-studio-week7-' + new Date().toISOString().split('T')[0] + '.txt';
       a.click();
       URL.revokeObjectURL(url);
-      
+
       alert('✓ Your answers have been saved as a text file! Check your Downloads folder.');
     }
-  </script>
-</body>
-</html>
+  </script
