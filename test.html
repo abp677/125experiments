@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 7 Research Studio: From Chaos to Clarity</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4/dist/full.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #1a1a2e; color: #fff; }
+    .main-container { max-width: 896px; margin: 0 auto; padding: 20px; }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="flex flex-col gap-6 p-6">
+      <div class="text-center space-y-2">
+        <h1 class="text-2xl font-bold text-primary">From Chaos to Clarity</h1>
+        <p class="text-base opacity-80">Everyone moves forward—just start where you are</p>
+      </div>
+
+      <div class="card bg-base-200 shadow-sm">
+        <div class="card-body">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="text-2xl">🧭</div>
+            <h2 class="card-title text-lg">Collect Yourself</h2>
+            <div class="badge badge-outline">10 min</div>
+          </div>
+          <p class="text-sm mb-4 opacity-80">Take a quiet moment to orient. Write or type (3–5 sentences):</p>
+          
+          <div class="space-y-3">
+            <div>
+              <label class="label"><span class="label-text text-sm">How many topics do I have?</span></label>
+              <input type="text" placeholder="Your answer..." class="input input-sm input-bordered w-full">
+            </div>
+            <div>
+              <label class="label"><span class="label-text text-sm">How many research questions (roughly)?</span></label>
+              <input type="text" placeholder="Your answer..." class="input input-sm input-bordered w-full">
+            </div>
+            <div>
+              <label class="label"><span class="label-text text-sm">How many sources have I saved?</span></label>
+              <input type="text" placeholder="Your answer..." class="input input-sm input-bordered w-full">
+            </div>
+            <div>
+              <label class="label"><span class="label-text text-sm">What's exciting me right now? What's confusing me?</span></label>
+              <textarea placeholder="Share your thoughts..." class="textarea textarea-bordered w-full" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center">
+        <button onclick="showTracks()" class="btn btn-primary btn-lg">Continue to Track Selection</button>
+      </div>
+
+      <div id="track-section" style="display: none;">
+        <div class="divider"></div>
+        
+        <div class="card bg-base-200 shadow-sm">
+          <div class="card-body">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="text-2xl">⚙️</div>
+              <h2 class="card-title text-lg">Pick a Track</h2>
+              <div class="badge badge-outline">20 min</div>
+            </div>
+            <p class="text-sm mb-4 opacity-80">Choose the track that fits your situation:</p>
+            
+            <div class="grid grid-cols-3 gap-4">
+              <div class="card bg-base-300 shadow-sm hover:bg-base-100 cursor-pointer">
+                <div class="card-body">
+                  <h3 class="font-bold text-base mb-2">Track A: Generating Questions</h3>
+                  <p class="text-xs opacity-70 mb-3">For you if you have < 10 questions or your topic still feels fuzzy</p>
+                  <ul class="text-xs space-y-1 opacity-80">
+                    <li>➤ Revisit your favorite topic</li>
+                    <li>➤ Use "Go Small with Questions"</li>
+                    <li>➤ Add 5 new specific, factual questions</li>
+                    <li>➤ Optional: test one in Google Scholar or Gemini</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="card bg-base-300 shadow-sm hover:bg-base-100 cursor-pointer">
+                <div class="card-body">
+                  <h3 class="font-bold text-base mb-2">Track B: Expanding Sources</h3>
+                  <p class="text-xs opacity-70 mb-3">For you if you have 10+ questions but < 10 sources</p>
+                  <ul class="text-xs space-y-1 opacity-80">
+                    <li>➤ Run 3–5 of your best questions as searches</li>
+                    <li>➤ Apply 20/80 rule (20% scan / 80% notice reaction)</li>
+                    <li>➤ Add new sources + 1-word reaction to your log</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="card bg-base-300 shadow-sm hover:bg-base-100 cursor-pointer">
+                <div class="card-body">
+                  <h3 class="font-bold text-base mb-2">Track C: Refining Focus</h3>
+                  <p class="text-xs opacity-70 mb-3">For you if you have 10+ sources and want to narrow</p>
+                  <ul class="text-xs space-y-1 opacity-80">
+                    <li>➤ Pick 3 "meh" sources</li>
+                    <li>➤ Answer: Why didn't it grab me?</li>
+                    <li>➤ Write "I'm more interested in ___ than ___"</li>
+                    <li>➤ Use insight to refine/cluster questions</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-info mt-4">
+              <span class="text-sm">🕐 Checkpoint: Write one sentence: "What changed or clicked for me during this block?"</span>
+            </div>
+            <textarea placeholder="Your checkpoint reflection..." class="textarea textarea-bordered w-full mt-2" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 shadow-sm mt-6">
+          <div class="card-body">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="text-2xl">💬</div>
+              <h2 class="card-title text-lg">Soundboarding Pairs</h2>
+              <div class="badge badge-outline">12–15 min</div>
+            </div>
+            <p class="text-sm mb-3 opacity-80">Find a partner (not your usual one):</p>
+            
+            <div class="space-y-2 text-sm opacity-90 mb-4">
+              <p><strong>1️⃣</strong> Share your topic + one question that still feels alive</p>
+              <p><strong>2️⃣</strong> Say what's interesting and what you're unsure about</p>
+              <p><strong>3️⃣</strong> Listener responds: "What's intriguing? What's unclear? Where could this live as a discipline?"</p>
+            </div>
+
+            <label class="label"><span class="label-text text-sm">✏️ What stuck with you from your partner's feedback? What's one next step?</span></label>
+            <textarea placeholder="Your reflection..." class="textarea textarea-bordered w-full" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 shadow-sm mt-6">
+          <div class="card-body">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="text-2xl">🧩</div>
+              <h2 class="card-title text-lg">Mini-Clustering</h2>
+              <div class="badge badge-outline">10 min</div>
+            </div>
+            
+            <div class="space-y-2 text-sm opacity-90 mb-4">
+              <p><strong>1️⃣</strong> Highlight 3–4 questions that connect</p>
+              <p><strong>2️⃣</strong> Give each cluster a working name (e.g., AI & Health Bias, AI & Sports Metrics)</p>
+              <p><strong>3️⃣</strong> Add one follow-up question under each cluster</p>
+            </div>
+
+            <textarea placeholder="Your clusters and follow-up questions..." class="textarea textarea-bordered w-full" rows="4"></textarea>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 shadow-sm mt-6">
+          <div class="card-body">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="text-2xl">📘</div>
+              <h2 class="card-title text-lg">Wrap Up & Next Step</h2>
+            </div>
+            
+            <p class="text-sm mb-3 opacity-80">Before you leave, jot one line:</p>
+            <label class="label"><span class="label-text text-sm font-semibold">"My next concrete move is ____."</span></label>
+            <input type="text" placeholder="Your next step..." class="input input-bordered w-full">
+          </div>
+        </div>
+
+        <div class="alert alert-success mt-6">
+          <div class="flex flex-col gap-1">
+            <span class="font-bold">✨ Purpose</span>
+            <ul class="text-sm space-y-1 mt-2">
+              <li>• Writing = Inquiry: every stage counts</li>
+              <li>• Curiosity and confusion are data</li>
+              <li>• Everyone leaves today with one specific next step</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showTracks() {
+      document.getElementById('track-section').style.display = 'block';
+      document.querySelector('button[onclick="showTracks()"]').style.display = 'none';
+      window.scrollTo({ top: document.getElementById('track-section').offsetTop - 20, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
